@@ -1,22 +1,11 @@
-var http = require('http'),
-  fs = require('fs');
+var express = require('express'),
+    app = express(),
+    path = require('path');
 
-// create our server using the http module
-http.createServer(function (req, res) {
-
-  // write to our server. set configuration for the response
-  res.writeHead(200, {
-    'Content-Type': 'txt/html',
-    'Access-Control-Allow-Origin': '*'
-  });
-
-  // grab the index.html file using fs
-  var readStream = fs.createReadStream(__dirname + '/index.html');
-
-  // send the index.html file to our user
-  readStream.pipe(res);
-
-}).listen(1337);
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/index.html');
+});
 
 // tell ourselves what's happening
+app.listen(1337);
 console.log('Visit me at http://localhost:1337');
