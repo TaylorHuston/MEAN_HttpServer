@@ -11,6 +11,12 @@ app.get('/', function(req, res) {
 //Admin section
 var adminRouter = express.Router();
 
+//Middleware that runs before any of the follow adminRouter actions
+adminRouter.use(function(req, res, next) {
+  console.log(req.method, req.url);
+  next();
+});
+
 //Admin main page
 adminRouter.get('/', function(req, res) {
   res.send("Dashboard");
