@@ -2,6 +2,11 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+var mongoose = require('mongoose');
+
+
+//Connect to DB
+mongoose.connect('mongodb://localhost/db_name');
 
 //Send the index.html file to the user
 app.get('/', function (req, res) {
