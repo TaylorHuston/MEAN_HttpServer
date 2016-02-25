@@ -79,6 +79,18 @@ adminRouter.get('/posts', function(req, res) {
 
 app.use('/admin', adminRouter);
 
+//Shorthand routing
+app.route('/login')
+  //Login form. /login
+  .get(function(req, res) {
+    res.send("Login form");
+  })
+  //Process form. /login
+  .post(function(req, res) {
+  console.log('Login');
+  res.send("Logged In");
+});
+
 //Start server
 app.listen(1337);
 console.log('Alive at localhost:1337');
