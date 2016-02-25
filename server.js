@@ -48,12 +48,31 @@ adminRouter.get('/', function(req, res) {
   res.send('Dashboard');
 });
 
-//Admin main page. /admin/users
+//Admin users page. /admin/users
 adminRouter.get('/users', function(req, res) {
   res.send('Users');
 });
 
-//Admin main page. /admin/posts
+//Admin user page with params. /admin/users/:name
+adminRouter.get('/users/:name', function(req, res){
+  res.send('Hello '+req.params.name);
+});
+
+//Admin hello page with 'validation'. /hello/:name
+adminRouter.param('name', function(req, res, next, name) {
+  //Some validation
+  console.log("Validating: "  +name);
+  
+  req.name = name;
+  next();
+});
+
+adminRouter.get('/hello/:name', function(req,res) {
+  res.send('Hello ' + req.name);
+})
+
+
+//Admin posts page. /admin/posts
 adminRouter.get('/posts', function(req, res) {
   res.send('Posts');
 });
