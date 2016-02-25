@@ -37,6 +37,12 @@ app.get('/', function(req, res) {
 //Routes for Admin section
 var adminRouter = express.Router();
 
+//Log each request
+adminRouter.use(function(req, res, next) {
+  console.log(req.method, req.url);
+  next();
+})
+
 //Admin main page. /admin
 adminRouter.get('/', function(req, res) {
   res.send('Dashboard');
