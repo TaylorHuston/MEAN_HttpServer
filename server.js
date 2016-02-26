@@ -1,3 +1,6 @@
+var mongoose =require('mongoose');
+mongoose.connect('mongodb://localhost/http_server');
+
 //*****Pure Node*****
 
 ////Get the HTTP and FIlesysten modules
